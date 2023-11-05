@@ -12,10 +12,13 @@ keymap = [
   { keys = ["Q"], commands = ["quit --output-current-directory"] },
 
   { keys = ["R"], commands = ["reload_dirlist"] },
-  { keys = ["z", "h"], commands = ["toggle_hidden"] },
-  { keys = ["ctrl+h"], commands = ["toggle_hidden"] },
+  # { keys = ["z", "h"], commands = ["toggle_hidden"] },
+  { keys = ["H"], commands = ["toggle_hidden"] },
+  # { keys = ["ctrl+h"], commands = ["toggle_hidden"] },
   { keys = ["\t"], commands = ["tab_switch 1"] },
   { keys = ["backtab"], commands = ["tab_switch -1"] },
+  { keys = ["ctrl+h"], commands = ["tab_switch -1"] },
+  { keys = ["ctrl+l"], commands = ["tab_switch 1"] },
 
   { keys = ["alt+1"], commands = ["tab_switch_index 1"] },
   { keys = ["alt+2"], commands = ["tab_switch_index 2"] },
@@ -34,10 +37,10 @@ keymap = [
   { keys = ["9"], commands = ["numbered_command 9"] },
 
   # arrow keys
-  { keys = ["arrow_up"], commands = ["cursor_move_up"] },
-  { keys = ["arrow_down"], commands = ["cursor_move_down"] },
-  { keys = ["arrow_left"], commands = ["cd .."] },
-  { keys = ["arrow_right"], commands = ["open"] },
+  # { keys = ["arrow_up"], commands = ["cursor_move_up"] },
+  # { keys = ["arrow_down"], commands = ["cursor_move_down"] },
+  # { keys = ["arrow_left"], commands = ["cd .."] },
+  # { keys = ["arrow_right"], commands = ["open"] },
   { keys = ["\n"], commands = ["open"] },
   { keys = ["home"], commands = ["cursor_move_home"] },
   { keys = ["end"], commands = ["cursor_move_end"] },
@@ -51,15 +54,18 @@ keymap = [
   # vim-like keybindings
   { keys = ["j"], commands = ["cursor_move_down"] },
   { keys = ["k"], commands = ["cursor_move_up"] },
+  { keys = ["J"], commands = ["cursor_move_down 5"] },
+  { keys = ["K"], commands = ["cursor_move_up 5"] },
   { keys = ["h"], commands = ["cd .."] },
   { keys = ["l"], commands = ["open"] },
   { keys = ["g", "g"], commands = ["cursor_move_home"] },
   { keys = ["G"], commands = ["cursor_move_end"] },
-  { keys = ["r"], commands = ["open_with"] },
+  # { keys = ["r"], commands = ["open_with"] },
+  { keys = ["o"], commands = ["open_with"] },
 
-  { keys = ["H"], commands = ["cursor_move_page_home"] },
-  { keys = ["L"], commands = ["cursor_move_page_middle"] },
-  { keys = ["M"], commands = ["cursor_move_page_end"] },
+  # { keys = ["H"], commands = ["cursor_move_page_home"] },
+  # { keys = ["L"], commands = ["cursor_move_page_middle"] },
+  # { keys = ["M"], commands = ["cursor_move_page_end"] },
 
   { keys = ["["], commands = ["parent_cursor_move_up"] },
   { keys = ["]"], commands = ["parent_cursor_move_down"] },
@@ -82,10 +88,11 @@ keymap = [
   { keys = ["p", "p"], commands = ["paste_files"] },
   { keys = ["p", "o"], commands = ["paste_files --overwrite=true"] },
 
-  { keys = ["a"], commands = ["rename_append"] },
-  { keys = ["A"], commands = ["rename_prepend"] },
+  # { keys = ["a"], commands = ["rename_append"] },
+  # { keys = ["A"], commands = ["rename_prepend"] },
 
-  { keys = ["f", "t"], commands = [":touch "] },
+  # { keys = ["f", "t"], commands = [":touch "] },
+  { keys = ["a"], commands = [":touch "] },
 
   { keys = [" "], commands = ["select --toggle=true"] },
   { keys = ["t"], commands = ["select --all=true --toggle=true"] },
@@ -93,20 +100,28 @@ keymap = [
 
   { keys = ["w"], commands = ["show_tasks --exit-key=w"] },
   { keys = ["b", "b"], commands = ["bulk_rename"] },
-  { keys = ["="], commands = ["set_mode"] },
+  { keys = ["r", "m"], commands = ["set_mode"] },
+  { keys = ["r", "r"], commands = [":rename "] },
+  { keys = ["r", "n"], commands = ["rename_keep_ext"] },
+  { keys = ["r", "a"], commands = ["rename_append"] },
+  { keys = ["r", "p"], commands = ["rename_prepend"] },
 
   { keys = [":"], commands = [":"] },
   { keys = [";"], commands = [":"] },
 
+  { keys = ["m", "d"], commands = [":mkdir "] },
   { keys = ["'"], commands = [":shell "] },
-  { keys = ["m", "k"], commands = [":mkdir "] },
-  { keys = ["c", "w"], commands = [":rename "] },
+  { keys = ["ctrl+g"], commands = [":shell lazygit\n"] },
 
-  { keys = ["/"], commands = [":search "] },
-  { keys = ["|"], commands = [":search_inc "] },
+  # { keys = ["/"], commands = [":search "] },
+  # { keys = ["|"], commands = [":search_inc "] },
+  { keys = ["/"], commands = [":search_inc "] },
   { keys = ["\\"], commands = [":search_glob "] },
-  { keys = ["S"], commands = ["search_fzf"] },
-  { keys = ["C"], commands = ["subdir_fzf"] },
+  # { keys = ["S"], commands = ["search_fzf"] },
+  # { keys = ["C"], commands = ["subdir_fzf"] },
+  { keys = ["f"], commands = [":filter "] },
+  { keys = ["F"], commands = ["subdir_fzf"] },
+  { keys = ["z"], commands = ["zi"] },
 
   { keys = ["n"], commands = ["search_next"] },
   { keys = ["N"], commands = ["search_prev"] },
@@ -130,6 +145,9 @@ keymap = [
   { keys = ["g", "d"], commands = ["cd ~/Downloads"] },
   { keys = ["g", "e"], commands = ["cd /etc"] },
   { keys = ["g", "h"], commands = ["cd ~/"] },
+  { keys = ["g", "n"], commands = ["cd ~/.config/nvim"] },
+  { keys = ["g", "s"], commands = ["cd ~/.config/nushell"] },
+  { keys = ["g", "j"], commands = ["cd ~/.config/joshuto"] },
   { keys = ["?"], commands = ["help"] },
 ]
 
@@ -164,9 +182,12 @@ keymap = [
   # vim-like keybindings
   { keys = ["j"], commands = ["cursor_move_down"] },
   { keys = ["k"], commands = ["cursor_move_up"] },
+  { keys = ["J"], commands = ["cursor_move_down 5"] },
+  { keys = ["K"], commands = ["cursor_move_up 5"] },
   { keys = ["g", "g"], commands = ["cursor_move_home"] },
   { keys = ["G"], commands = ["cursor_move_end"] },
 
   { keys = ["w"], commands = ["show_tasks"] },
   { keys = ["escape"], commands = ["show_tasks"] },
+  { keys = ["q"], commands = ["show_tasks"] },
 ]
